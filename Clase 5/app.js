@@ -1,74 +1,55 @@
-//Clase 4: Programación avanzada con Funciones
+//Clase 5: Objetos
 console.log("Hola Mundo");
 
 /*Curso de Coderhouse: 23240
 Estudiante: Guillermo Andrés Musso Rodríguez
 e-Mail: gamussorodriguez@teco.com.ar
 Teléfono: 1130743868
-Fecha: 27/10/2021
+Fecha: 30/10/2021
 
-****Desafío 4 (Cuatro)****
+****Desafío 5 (Cinco)****
 
 */
 
-const mensajeFlecha = (valor3) => alert(valor3);
-mensajeFlecha("¡Le damos la Bienvenida! Haga click en Aceptar para Continuar");
+class Device{
+    constructor(manufacturer, model, serialNumber, deviceUser, devicePass, token){
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.serialNumber = serialNumber;
+        this.deviceUser = deviceUser;
+        this.devicePass = devicePass;
+        this.token = token;
+    }
+    onboardDevice(){
+        alert("El dispositivo número de serie " + this.serialNumber + " será onboardeado.");
+    }
+    checkDevice(){
+        let check = prompt("Los datos del dispositivo ingresado son: "+
+                "\n\r"+"Fabricante: " + this.manufacturer +
+                "\n\r"+"Modelo: " + this.model +
+                "\n\r"+"serialNumber: " + this.serialNumber +
+                "\n\r"+"Usuario: " + this.deviceUser +
+                "\n\r"+"Contraseña: " + this.devicePass +
+                "\n\r"+"Token: " + this.token +
+                "\n\r"+"Ingrese 1 si es correcto o 0 si es incorrecto."
+                );
+        if (check == 1) {
+            alert("Dispositivo Onbordeado Correctamente");
+        }
+        else {
+            alert("El dispositivo con número de serie "+ this.serialNumber + "no fue Onboardead");
+        }
+    }
+};
 
-function precioActual(costo,markUp,impuesto) {
-    let precioDeVenta = (costo + impuesto)*(1+(markUp/100));
-    return precioDeVenta;
-}
-//la variable "tiempo" es la cantidad de meses
-function actualizarPrecio(precio,inflacion,tiempo) {
-    tiempo = tiempo || 3;
-    let precioActualizado = (precio)*(1+inflacion*tiempo/100);
-    return precioActualizado;
-}
+let fabricante = prompt("Ingrese el fabricante del dispositivo");
+let modelo = prompt("Ingrese el modelo del dispositivo");
+let numeroDeSerie = prompt("Ingrese el número de serie");
+let usuario = prompt("Ingrese el usuario de la cuenta del dispositivo");
+let password = prompt("Ingrese el password de la cuenta del dispositivo");
+let deviceToken = prompt("Ingrese el token de la cuenta del dispositivo");
 
-let costoIngresado = prompt("Ingrese el costo sin impuestos");
-while (isNaN(costoIngresado)) {
-    console.log(costoIngresado);
-    console.log("Valor inválido. Debe ingresar un número");
-    document.write("<br>Usted ingresó:"+" "+ costoIngresado + "." + " " + "Debe ingresar un número");
-    alert ("Debe ingresar un número");
-    costoIngresado = prompt("Ingrese un número");
-}
-let impuestoIngresado = prompt("Ingrese el impuesto");
-while (isNaN(impuestoIngresado)) {
-    console.log(impuestoIngresado);
-    console.log("Valor inválido. Debe ingresar un número");
-    document.write("<br>Usted ingresó:"+" "+ impuestoIngresado + "." + " " + "Debe ingresar un número");
-    alert ("Debe ingresar un número");
-    impuestoIngresado = prompt("Ingrese un número");
-}
-let markUpIngresado = prompt("Ingrese el MarkUp deseado");
-while (isNaN(markUpIngresado)) {
-    console.log(markUpIngresado);
-    console.log("Valor inválido. Debe ingresar un número");
-    document.write("<br>Usted ingresó:"+" "+ markUpIngresado + "." + " " + "Debe ingresar un número");
-    alert ("Debe ingresar un número");
-    markUpIngresado = prompt("Ingrese un número");
-}
-let precioHoy = precioActual(Number(costoIngresado),Number(markUpIngresado),Number(impuestoIngresado));
-console.log(precioActual);
-document.write("<br>El precio actual de venta es:"+" "+ precioHoy);
-alert (precioHoy);
-let inflacion = prompt("ingrese el valor en % de inflacion mensual");
-while (isNaN(inflacion)) {
-    console.log(inflacion);
-    console.log("Valor inválido. Debe ingresar un número");
-    document.write("Usted ingresó:"+" "+ inflacion + "." + " " + "Debe ingresar un número");
-    alert ("Debe ingresar un número");
-    inflacion = prompt("Ingrese un número");
-}
-let mensual = prompt("ingrese la cantidad de meses a proyectar");
-while (isNaN(mensual)) {
-    console.log(mensual);
-    console.log("Valor inválido. Debe ingresar un número");
-    document.write("<br>Usted ingresó:"+" "+ mensual + "." + " " + "Debe ingresar un número");
-    alert ("Debe ingresar un número");
-    mensual = prompt("Ingrese un número");
-}
-let precioActualizado = actualizarPrecio(precioHoy,inflacion,mensual);
-console.log(precioActualizado);
-document.write("<br>El preion Actualizado en"+" "+ mensual + " meses " + "será de " + precioActualizado);
+const dispositivo = new Device(fabricante,modelo,numeroDeSerie,usuario,password,deviceToken);
+dispositivo.onboardDevice();
+dispositivo.checkDevice();
+document.write("El siguiente dispositivo fue onboardeado:"+"<br>Marca: "+dispositivo.manufacturer+"<br>Modelo: "+dispositivo.model+"<br>Número de serie: "+dispositivo.serialNumber+"<br>Usuario: "+dispositivo.deviceUser+"<br>Contraseña: "+dispositivo.devicePass+"<br>Token: "+dispositivo.token);
