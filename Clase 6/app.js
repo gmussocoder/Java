@@ -1,6 +1,5 @@
-//Clase 6: Array
+//Clase 6: Arrays
 console.log("Hola Mundo");
-
 /*Curso de Coderhouse: 23240
 Estudiante: Guillermo Andrés Musso Rodríguez
 e-Mail: gamussorodriguez@teco.com.ar
@@ -10,7 +9,6 @@ Fecha: 30/10/2021
 ****Desafío 6 (Seis)****
 
 */
-
 class Device{
     constructor(manufacturer, model, serialNumber, deviceUser, devicePass, token){
         this.manufacturer = manufacturer;
@@ -41,15 +39,27 @@ class Device{
         }
     }
 };
-
-let fabricante = prompt("Ingrese el fabricante del dispositivo");
-let modelo = prompt("Ingrese el modelo del dispositivo");
-let numeroDeSerie = prompt("Ingrese el número de serie");
-let usuario = prompt("Ingrese el usuario de la cuenta del dispositivo");
-let password = prompt("Ingrese el password de la cuenta del dispositivo");
-let deviceToken = prompt("Ingrese el token de la cuenta del dispositivo");
-
-const dispositivo = new Device(fabricante,modelo,numeroDeSerie,usuario,password,deviceToken);
-dispositivo.onboardDevice();
-dispositivo.checkDevice();
-document.write("El siguiente dispositivo fue onboardeado:"+"<br>Marca: "+dispositivo.manufacturer+"<br>Modelo: "+dispositivo.model+"<br>Número de serie: "+dispositivo.serialNumber+"<br>Usuario: "+dispositivo.deviceUser+"<br>Contraseña: "+dispositivo.devicePass+"<br>Token: "+dispositivo.token);
+let  dispositivosOnboardeados = [];
+let estado = true;
+while (estado) {
+    let fabricante = prompt("Ingrese el fabricante del dispositivo");
+    let modelo = prompt("Ingrese el modelo del dispositivo");
+    let numeroDeSerie = prompt("Ingrese el número de serie");
+    let usuario = prompt("Ingrese el usuario de la cuenta del dispositivo");
+    let password = prompt("Ingrese el password de la cuenta del dispositivo");
+    let deviceToken = prompt("Ingrese el token de la cuenta del dispositivo");
+    const dispositivo = new Device(fabricante,modelo,numeroDeSerie,usuario,password,deviceToken);
+    dispositivo.onboardDevice();
+    dispositivo.checkDevice();
+    dispositivosOnboardeados.push(dispositivo);
+    estado = Boolean(Number(prompt("Ingrese 1 para continuar onboardenado mas y 0 para salir")));
+}
+document.write("Los siguientes dispositivos fueron onboardeados:");
+for (let i = 0; i < dispositivosOnboardeados.length; i++) {
+    document.write("<br>Marca: " + dispositivosOnboardeados[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeados[i].model + "<br>Número de serie: " + dispositivosOnboardeados[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeados[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeados[i].devicePass + "<br>Token: " + dispositivosOnboardeados[i].token);
+}
+let filtro = prompt("El nombre de Fabricante para desplegar por Fabricante");
+dispositivosOnboardeadosFiltro = dispositivosOnboardeados.filter(dispositivosOnboardeados => dispositivosOnboardeados.manufacturer.includes(filtro));
+for (let i = 0; i < dispositivosOnboardeadosFiltro.length; i++) {
+    document.write("<br>Marca: " + dispositivosOnboardeadosFiltro[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeadosFiltro[i].model + "<br>Número de serie: " + dispositivosOnboardeadosFiltro[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeadosFiltro[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeadosFiltro[i].devicePass + "<br>Token: " + dispositivosOnboardeadosFiltro[i].token);
+}
