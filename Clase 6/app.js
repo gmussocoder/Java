@@ -57,9 +57,11 @@ while (estado) {
 document.write("Los siguientes dispositivos fueron onboardeados:");
 for (let i = 0; i < dispositivosOnboardeados.length; i++) {
     document.write("<br>Marca: " + dispositivosOnboardeados[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeados[i].model + "<br>Número de serie: " + dispositivosOnboardeados[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeados[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeados[i].devicePass + "<br>Token: " + dispositivosOnboardeados[i].token);
+    console.log(dispositivosOnboardeados[i]);
 }
 let filtro = prompt("El nombre de Fabricante para desplegar por Fabricante");
 dispositivosOnboardeadosFiltro = dispositivosOnboardeados.filter(dispositivosOnboardeados => dispositivosOnboardeados.manufacturer.includes(filtro));
 for (let i = 0; i < dispositivosOnboardeadosFiltro.length; i++) {
     document.write("<br>Marca: " + dispositivosOnboardeadosFiltro[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeadosFiltro[i].model + "<br>Número de serie: " + dispositivosOnboardeadosFiltro[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeadosFiltro[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeadosFiltro[i].devicePass + "<br>Token: " + dispositivosOnboardeadosFiltro[i].token);
+    console.log(dispositivosOnboardeadosFiltro[i]);
 }
