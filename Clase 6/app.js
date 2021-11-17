@@ -3,7 +3,7 @@ console.log("Hola Mundo");
 /*Curso de Coderhouse: 23240
 Estudiante: Guillermo Andrés Musso Rodríguez
 e-Mail: gamussorodriguez@teco.com.ar
-Teléfono: 1130743868
+Teléfono: 1130743868 
 Fecha: 30/10/2021
 
 ****Desafío 6 (Seis)****
