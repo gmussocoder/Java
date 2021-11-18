@@ -64,8 +64,4 @@ dispositivosOnboardeadosFiltro = dispositivosOnboardeados.filter(dispositivosOnb
 for (let i = 0; i < dispositivosOnboardeadosFiltro.length; i++) {
     document.write("<br>Marca: " + dispositivosOnboardeadosFiltro[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeadosFiltro[i].model + "<br>Número de serie: " + dispositivosOnboardeadosFiltro[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeadosFiltro[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeadosFiltro[i].devicePass + "<br>Token: " + dispositivosOnboardeadosFiltro[i].token);
     console.log(dispositivosOnboardeadosFiltro[i]);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 872a8abb8046b1f28ad83a9e4508ce8c2d3cc1b2
