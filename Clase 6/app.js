@@ -35,7 +35,7 @@ class Device{
             alert("Dispositivo Onbordeado Correctamente");
         }
         else {
-            alert("El dispositivo con número de serie "+ this.serialNumber + "no fue Onboardead");
+            alert("El dispositivo con número de serie "+ this.serialNumber + "no fue Onboardeado");
         }
     }
 };
@@ -52,7 +52,7 @@ while (estado) {
     dispositivo.onboardDevice();
     dispositivo.checkDevice();
     dispositivosOnboardeados.push(dispositivo);
-    estado = Boolean(Number(prompt("Ingrese 1 para continuar onboardenado mas y 0 para salir")));
+    estado = Boolean(Number(prompt("Ingrese 1 para continuar onboardeando mas y 0 para salir")));
 }
 document.write("Los siguientes dispositivos fueron onboardeados:");
 for (let i = 0; i < dispositivosOnboardeados.length; i++) {
@@ -65,3 +65,17 @@ for (let i = 0; i < dispositivosOnboardeadosFiltro.length; i++) {
     document.write("<br>Marca: " + dispositivosOnboardeadosFiltro[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeadosFiltro[i].model + "<br>Número de serie: " + dispositivosOnboardeadosFiltro[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeadosFiltro[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeadosFiltro[i].devicePass + "<br>Token: " + dispositivosOnboardeadosFiltro[i].token);
     console.log(dispositivosOnboardeadosFiltro[i]);
 }
+console.log("Hola");
+//Ordenamiento del Array de Objetos por Orden Alfabético de Fabricante:
+dispositivosOnboardeados.sort((a,b) => {
+    const manufacturerA = a.manufacturer.toLowerCase();
+    const manufacturerB = b.manufacturer.toLowerCase();
+    if (manufacturerA < manufacturerB) {
+        return -1;
+    }
+    if (manufacturerA > manufacturerB) {
+        return 1;
+    }
+    return 0;
+});
+console.log(dispositivosOnboardeados);
