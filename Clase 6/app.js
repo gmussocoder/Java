@@ -81,6 +81,7 @@ function devicesByManufacturer(Array,filtro){
 
 let  dispositivosOnboardeados = [];
 let estado = true;
+
 /**************************/
 /****  Menú Principal  ****/
 /**************************/
