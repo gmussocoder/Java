@@ -4,11 +4,14 @@ console.log("Hola Mundo");
 Estudiante: Guillermo Andrés Musso Rodríguez
 e-Mail: gamussorodriguez@teco.com.ar
 Teléfono: 1130743868 
-Fecha: 30/10/2021
+Fecha: 18/11/2021
 
-****Desafío 6 (Seis)****
+**** Desafío 6 (Seis): "Primer Entrega del Proyecto Final" ****
 
 */
+/****************************************************************
+*************************** Clases ******************************
+****************************************************************/
 class Device{
     constructor(manufacturer, model, serialNumber, deviceUser, devicePass, token){
         this.manufacturer = manufacturer;
@@ -39,8 +42,48 @@ class Device{
         }
     }
 };
+
+/****************************************************************
+***********    Función para ordenar por Orden       *************
+***********    Alfabético de Fabricante:            *************
+****************************************************************/
+function ordenarArray(Array){
+    Array.sort((a,b) => {
+        const atributoA = a.manufacturer.toLowerCase();
+        const atributoB = b.manufacturer.toLowerCase();
+        if (atributoA < atributoB) {
+            return -1;
+        }
+        if (atributoA > atributoB) {
+            return 1;
+        }
+        return 0;
+    });
+    return Array;
+}
+/****************************************************************
+********    Función Muestra Dispositivos por Fabricante     *****
+*****************************************************************
+****************************************************************/
+function devicesByManufacturer(Array,filtro){
+    ArrayFiltered = Array.filter(Array => Array.manufacturer.includes(filtro));
+    for (let i = 0; i < ArrayFiltered.length; i++) {
+        document.write("<br>Marca: " + ArrayFiltered[i].manufacturer + "<br>Modelo: " + ArrayFiltered[i].model + "<br>Número de serie: " + ArrayFiltered[i].serialNumber + "<br>Usuario: "+ ArrayFiltered[i].deviceUser + "<br>Contraseña: " + ArrayFiltered[i].devicePass + "<br>Token: " + ArrayFiltered[i].token);
+        console.log(ArrayFiltered[i]);
+    }
+}
+
+/************************************************************************************/
+/************************************************************************************/
+/*                                     MAIN                                         */
+/************************************************************************************/
+/************************************************************************************/
+
 let  dispositivosOnboardeados = [];
 let estado = true;
+/**************************/
+/****  Menú Principal  ****/
+/**************************/
 while (estado) {
     let fabricante = prompt("Ingrese el fabricante del dispositivo");
     let modelo = prompt("Ingrese el modelo del dispositivo");
@@ -60,22 +103,7 @@ for (let i = 0; i < dispositivosOnboardeados.length; i++) {
     console.log(dispositivosOnboardeados[i]);
 }
 let filtro = prompt("El nombre de Fabricante para desplegar por Fabricante");
-dispositivosOnboardeadosFiltro = dispositivosOnboardeados.filter(dispositivosOnboardeados => dispositivosOnboardeados.manufacturer.includes(filtro));
-for (let i = 0; i < dispositivosOnboardeadosFiltro.length; i++) {
-    document.write("<br>Marca: " + dispositivosOnboardeadosFiltro[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeadosFiltro[i].model + "<br>Número de serie: " + dispositivosOnboardeadosFiltro[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeadosFiltro[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeadosFiltro[i].devicePass + "<br>Token: " + dispositivosOnboardeadosFiltro[i].token);
-    console.log(dispositivosOnboardeadosFiltro[i]);
-}
-console.log("Hola");
-//Ordenamiento del Array de Objetos por Orden Alfabético de Fabricante: .
-dispositivosOnboardeados.sort((a,b) => {
-    const manufacturerA = a.manufacturer.toLowerCase();
-    const manufacturerB = b.manufacturer.toLowerCase();
-    if (manufacturerA < manufacturerB) {
-        return -1;
-    }
-    if (manufacturerA > manufacturerB) {
-        return 1;
-    }
-    return 0;
-});
+devicesByManufacturer(dispositivosOnboardeados,filtro);
 console.log(dispositivosOnboardeados);
+console.log("Ordeno Array de Objetos por Orden Alfabético");
+console.log(ordenarArray(dispositivosOnboardeados));
