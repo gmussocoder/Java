@@ -66,7 +66,7 @@ for (let i = 0; i < dispositivosOnboardeadosFiltro.length; i++) {
     console.log(dispositivosOnboardeadosFiltro[i]);
 }
 console.log("Hola");
-//Ordenamiento del Array de Objetos por Orden Alfabético de Fabricante:
+//Ordenamiento del Array de Objetos por Orden Alfabético de Fabricante: .
 dispositivosOnboardeados.sort((a,b) => {
     const manufacturerA = a.manufacturer.toLowerCase();
     const manufacturerB = b.manufacturer.toLowerCase();
