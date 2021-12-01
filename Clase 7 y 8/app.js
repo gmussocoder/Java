@@ -1,12 +1,12 @@
-//Clase 6: Arrays
+//Clase 7 y 8: Storage | JSON | DOM
 console.log("Hola Mundo");
 /*Curso de Coderhouse: 23240
 Estudiante: Guillermo Andrés Musso Rodríguez
 e-Mail: gamussorodriguez@teco.com.ar
 Teléfono: 1130743868 
-Fecha: 18/11/2021
+Fecha: 26/11/2021
 
-**** Desafío 6 (Seis): "Primer Entrega del Proyecto Final" ****
+**** Desafío 8 (Ocho): "Interactuar con HTML" ****
 
 */
 /****************************************************************
@@ -99,9 +99,14 @@ while (estado) {
     estado = Boolean(Number(prompt("Ingrese 1 para continuar onboardeando mas y 0 para salir")));
 }
 document.write("Los siguientes dispositivos fueron onboardeados:");
-for (let i = 0; i < dispositivosOnboardeados.length; i++) {
-    document.write("<br>Marca: " + dispositivosOnboardeados[i].manufacturer + "<br>Modelo: " + dispositivosOnboardeados[i].model + "<br>Número de serie: " + dispositivosOnboardeados[i].serialNumber + "<br>Usuario: "+dispositivosOnboardeados[i].deviceUser + "<br>Contraseña: " + dispositivosOnboardeados[i].devicePass + "<br>Token: " + dispositivosOnboardeados[i].token);
-    console.log(dispositivosOnboardeados[i]);
+/**** Se modifica la etiqueta Body y se crea la etiqueta div: ****/
+for (const dispositivoOnboreado of dispositivosOnboardeados) {
+    let contenedor = document.createElement("div");
+    //Definimos el innerHTML del elemento con una plantilla de texto
+    contenedor.innerHTML = `<h3> Fabricante: ${dispositivoOnboreado.manufacturer}</h3>
+                            <p> Modelo: ${dispositivoOnboreado.model}</p>
+                            <b> Numero de Serie: ${dispositivoOnboreado.serialNumber}</b>`;
+    document.body.appendChild(contenedor);
 }
 let filtro = prompt("El nombre de Fabricante para desplegar por Fabricante");
 devicesByManufacturer(dispositivosOnboardeados,filtro);
